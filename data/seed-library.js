@@ -115,6 +115,29 @@ async function seed() {
 
     await db.collection('staff').insertMany(staff);
 
+    // Users collection: comptes d'authentification (référence staff_id/member_id) avec rôle
+    const users = [
+      // system admin (non lié à un profile staff / member)
+      { _id: new ObjectId(), username: 'admin', email: 'admin@library.example', passwordHash: 'seed:changeme', role: 'admin', createdAt: new Date(), active: true },
+      // staff as users
+      { _id: new ObjectId(), username: 'sophie.bernard', email: staff[0].email, passwordHash: 'seed:changeme', role: 'librarian', staff_id: staff[0]._id, createdAt: new Date(), active: true },
+      { _id: new ObjectId(), username: 'julien.morel', email: staff[1].email, passwordHash: 'seed:changeme', role: 'assistant', staff_id: staff[1]._id, createdAt: new Date(), active: true },
+      { _id: new ObjectId(), username: 'lea.fontaine', email: staff[2].email, passwordHash: 'seed:changeme', role: 'manager', staff_id: staff[2]._id, createdAt: new Date(), active: true },
+      // members as users
+      { _id: new ObjectId(), username: 'claire.martin', email: members[0].email, passwordHash: 'seed:changeme', role: 'member', member_id: members[0]._id, createdAt: new Date(), active: members[0].active },
+      { _id: new ObjectId(), username: 'paul.dupuis', email: members[1].email, passwordHash: 'seed:changeme', role: 'member', member_id: members[1]._id, createdAt: new Date(), active: members[1].active },
+      { _id: new ObjectId(), username: 'ines.rossi', email: members[2].email, passwordHash: 'seed:changeme', role: 'member', member_id: members[2]._id, createdAt: new Date(), active: members[2].active },
+      { _id: new ObjectId(), username: 'marc.perez', email: members[3].email, passwordHash: 'seed:changeme', role: 'member', member_id: members[3]._id, createdAt: new Date(), active: members[3].active },
+      { _id: new ObjectId(), username: 'amina.elk', email: members[4].email, passwordHash: 'seed:changeme', role: 'member', member_id: members[4]._id, createdAt: new Date(), active: members[4].active },
+      { _id: new ObjectId(), username: 'kenji.tanaka', email: members[5].email, passwordHash: 'seed:changeme', role: 'member', member_id: members[5]._id, createdAt: new Date(), active: members[5].active },
+    ];
+
+    await db.collection('users').insertMany(users);
+    // Indexes pour users
+    await db.collection('users').createIndex({ email: 1 }, { unique: true });
+    await db.collection('users').createIndex({ username: 1 }, { unique: true });
+    await db.collection('users').createIndex({ role: 1 });
+
     // Loans: take some copies and create loans
     const now = new Date();
     const loans = [
