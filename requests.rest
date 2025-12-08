@@ -1,0 +1,20 @@
+### Cas de Test 1A : Création d'un Auteur (Succès)
+POST http://localhost:3000/api/authors
+Content-Type: application/json
+
+{
+    "name": "Jean-Pierre Dumas",
+    "bio": "Auteur français spécialisé en histoire médiévale.",
+    "nationality": "FR",
+    "birthDate": "1965-08-15"
+}
+
+### Cas de Test 2A : Pagination et Récupération des Relations (Auteurs)
+# Exigence 2 : Lecture avancée (Filtres/Pagination/Relation)
+# Récupère 3 Livres de la page 1 (doit afficher les détails des auteurs)
+GET http://localhost:3000/api/books?limit=3&page=1
+Accept: application/json
+### Cas de Test 3 : Pipeline d'Agrégation (Top Auteurs)
+# Exigence 3 : Route d'agrégation ($group, $lookup, $sort)
+GET http://localhost:3000/api/books/stats/top-authors
+Accept: application/json

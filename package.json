@@ -1,20 +1,30 @@
 {
   "dependencies": {
-    "dotenv": "^17.2.3"
+    "dotenv": "^17.2.3",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.1",
+    "validator": "^13.15.23",
+    "validatorjs": "^3.22.1"
   },
+  "type": "module",
   "name": "backend-node",
   "version": "1.0.0",
-  "description": "",
+  "description": "Projet Backend Node.js & MongoDB pour Bibliothèque Numérique",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/naura84/backend-node.git"
   },
-  "keywords": [],
+  "keywords": [
+    "node",
+    "express",
+    "mongodb",
+    "mongoose"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
