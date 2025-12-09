@@ -1,6 +1,6 @@
 // /controllers/authorController.js
 import Author from '../models/Author.js';
-import validator from 'validator'; // N'oubliez pas d'installer : npm install validator
+import validator from 'validator'; 
 
 // Exigence 1 : Route d'écriture (POST)
 export const createAuthor = async (req, res, next) => {
