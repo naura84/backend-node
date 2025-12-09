@@ -9,6 +9,7 @@ import { notFound, errorHandler } from './middlewares/errorMiddleware.js';
 // Import des modules de routes
 import bookRoutes from './routes/bookRoutes.js';
 import authorRoutes from './routes/authorRoutes.js';
+import articlesRoutes from "./routes/articlesRoutes.js";
 
 
 // --- 1. Configuration et Variables d'Environnement ---
