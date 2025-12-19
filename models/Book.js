@@ -9,6 +9,11 @@ const BookSchema = new Schema({
         unique: true, 
         trim: true 
     },
+    price: { 
+        type: Number, 
+        required: [true, 'Le prix est requis pour passer commande'],
+        min: 0 
+    },
     isbn: { 
         type: String, 
         required: [true, 'L\'ISBN est requis.'], 

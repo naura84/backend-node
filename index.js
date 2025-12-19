@@ -3,13 +3,15 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+
 // --- 1. Importer les middlewares UNE SEULE FOIS ---
 import { notFound, errorHandler } from './middlewares/errorMiddleware.js';
 
 // Import des modules de routes
 import bookRoutes from './routes/bookRoutes.js';
 import authorRoutes from './routes/authorRoutes.js';
-
+import articlesRoutes from "./routes/articlesRoutes.js";
+import etudiantRoutes from './routes/etudiantRoutes.js';
 
 // --- 1. Configuration et Variables d'Environnement ---
 dotenv.config();
@@ -26,9 +28,9 @@ async function connectDB() {
     }
     try {
         await mongoose.connect(MONGO_URI);
-        console.log(`✅ MongoDB connecté avec succès.`);
+        console.log(`MongoDB connecté avec succès.`);
     } catch (error) {
-        console.error(`❌ Erreur de connexion MongoDB: ${error.message}`);
+        console.error(`Erreur de connexion MongoDB: ${error.message}`);
         process.exit(1);
     }
 }
@@ -54,6 +56,7 @@ app.get('/', (req, res) => {
 // Connexion des routes spécifiques au projet
 app.use('/api/authors', authorRoutes);
 app.use('/api/books', bookRoutes);
+app.use('/api/etudiant', etudiantRoutes);
 
 
 // --- 5. Middlewares de Gestion des Erreurs (DOIVENT être les derniers) ---
@@ -67,6 +70,6 @@ app.use(errorHandler);
 
 // --- 6. Démarrage du Serveur ---
 app.listen(PORT, () => {
-    console.log(`🚀 Serveur démarré sur le port http://localhost:${PORT}`);
-    console.log(`   (Mode: ${process.env.NODE_ENV || 'development'})`);
+    console.log(` Serveur démarré sur le port http://localhost:${PORT}`);
+    console.log(`  (Mode: ${process.env.NODE_ENV || 'development'})`);
 });
