@@ -12,7 +12,7 @@ import bookRoutes from './routes/bookRoutes.js';
 import authorRoutes from './routes/authorRoutes.js';
 import articlesRoutes from "./routes/articlesRoutes.js";
 import etudiantRoutes from './routes/etudiantRoutes.js';
-
+import orderRoutes from './routes/orderRoutes.js';
 // --- 1. Configuration et Variables d'Environnement ---
 dotenv.config();
 
@@ -57,6 +57,7 @@ app.get('/', (req, res) => {
 app.use('/api/authors', authorRoutes);
 app.use('/api/books', bookRoutes);
 app.use('/api/etudiant', etudiantRoutes);
+app.use('/api/orders', orderRoutes);
 
 
 // --- 5. Middlewares de Gestion des Erreurs (DOIVENT être les derniers) ---
