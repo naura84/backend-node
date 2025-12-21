@@ -58,9 +58,8 @@ app.use('/api/authors', authorRoutes);
 app.use('/api/books', bookRoutes);
 app.use('/api/etudiant', etudiantRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/articles', articlesRoutes);
 
-
-// --- 5. Middlewares de Gestion des Erreurs (DOIVENT être les derniers) ---
 
 // 1. Middleware 404 (pour toutes les routes non trouvées)
 app.use(notFound); 

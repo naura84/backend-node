@@ -1,4 +1,7 @@
 # backend-node.js# 
+
+## Les JSON import/export sont dans le fichier seed-library
+
 API Système de Gestion Mixte (Bibliothèque & Académique)
 
 ## Présentation du sujet
@@ -72,6 +75,11 @@ Les relations sont gérées par **références (`ObjectId`)** pour permettre une
 * **POST** `/api/orders` : Création d'une commande (le prix total est calculé automatiquement en consultant le prix unitaire des livres en base).
 * **GET** `/api/orders` : Liste des commandes avec filtrage possible par `userId`.
 * **GET** `/api/orders/stats` : **Agrégation avancée** affichant par utilisateur le montant total dépensé et l'historique de ses commandes.
+
+### 4. Articles de Blog et Auteurs
+* **POST** `/api/articles` : Publier un nouvel article contenant un titre, un contenu, une date de publication et un auteur.
+* **GET** `/api/articles` : Obtenir tous les articles, triés par date décroissante.
+* **GET** `/api/articles` : **Agrégation avancée** Afficher les articles accompagnés des infos complètes de l’auteur (nom, bio), puis regrouper les articles par auteur pour calculer le nombre total de publications.
 
 ---
 
